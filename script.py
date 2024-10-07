@@ -1,3 +1,6 @@
+# Написать код, который записывает матрицу от оператора и выводит элемент по зпросу индекса
+
+
 def сreate_matrca(stroki, stolbsi):
     matrisa = []
     for i in range(stroki):
