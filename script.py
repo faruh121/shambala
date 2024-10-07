@@ -12,20 +12,20 @@ def take_element(matrisa, ind_stroki, ind_stolbsa):
     try:
         return matrisa[ind_stroki][ind_stolbsa]
     except IndexError:
-        return "Индекс вне диапазона"
+        return "Введенный индекс находится вне диапазона"
 
 stroki = 10
 stolbsi = 12
 matrisa = сreate_matrca(stroki, stolbsi)
 
-print("Сгенерированная матрица:")
+print("Матрица:")
 for i in matrisa:
     print(i)
 
 
-ind_stroki = int(input("Введите индекс строки: "))
-ind_stolbsa = int(input("Введите индекс столбца: "))
+ind_stroki = int(input("Индекс строки: "))
+ind_stolbsa = int(input("Индекс столбца: "))
 
 
 elm = take_element(matrisa, ind_stroki, ind_stolbsa)
-print(f"Элемент на позиции ({ind_stroki}, {ind_stolbsa}): {elm}")
+print(f"Данный элемент находится на позиции ({ind_stroki}, {ind_stolbsa}): {elm}")
