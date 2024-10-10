@@ -1,5 +1,4 @@
-# Написать код, который записывает матрицу от оператора и выводит элемент по зпросу индекса
-
+# Написать код, который записывает матрицу от пользователя и выводит элемент по зпросу индекса реализовать метод зендаля
 
 def сreate_matrca(stroki, stolbsi):
     matrisa = []
@@ -10,25 +9,32 @@ def сreate_matrca(stroki, stolbsi):
         matrisa.append(stroka)
     return matrisa
 
-
 def take_element(matrisa, ind_stroki, ind_stolbsa):
     try:
         return matrisa[ind_stroki][ind_stolbsa]
     except IndexError:
         return "Введенный индекс находится вне диапазона"
 
-stroki = 10
-stolbsi = 12
-matrisa = сreate_matrca(stroki, stolbsi)
+# Ввод размеров матрицы
+try:
+    stroki = int(input("Введите количество строк: "))
+    stolbsi = int(input("Введите количество столбцов: "))
+except ValueError:
+    print("Ошибка ввода. Пожалуйста, введите целые числа.")
+    exit()
 
+matrisa = сreate_matrca(stroki, stolbsi)
 print("Матрица:")
 for i in matrisa:
     print(i)
 
-
-ind_stroki = int(input("Индекс строки: "))
-ind_stolbsa = int(input("Индекс столбца: "))
-
+# Ввод индексов для получения элемента
+try:
+    ind_stroki = int(input("Индекс строки: "))
+    ind_stolbsa = int(input("Индекс столбца: "))
+except ValueError:
+    print("Ошибка ввода. Пожалуйста, введите целые числа.")
+    exit()
 
 elm = take_element(matrisa, ind_stroki, ind_stolbsa)
 print(f"Данный элемент находится на позиции ({ind_stroki}, {ind_stolbsa}): {elm}")
