@@ -1,5 +1,3 @@
-# Написать код, который записывает матрицу от пользователя и выводит элемент по зпросу индекса реализовать метод зендаля
-
 import numpy as np
 
 def сreate_matrca(stroki, stolbsi):
@@ -7,7 +5,13 @@ def сreate_matrca(stroki, stolbsi):
     for i in range(stroki):
         stroka = []
         for j in range(stolbsi):
-            stroka.append(i * stolbsi + j) 
+            while True:
+                try:
+                    value = float(input(f"Введите значение для элемента [{i + 1}, {j + 1}]: "))
+                    stroka.append(value)
+                    break
+                except ValueError:
+                    print("Ошибка ввода. Пожалуйста, введите число.")
         matrisa.append(stroka)
     return matrisa
 
@@ -30,21 +34,17 @@ def check_convergence(a):
 def gauss_seidel(a, b, max_iterations=100, tolerance=1e-10):
     n = len(a)
     x = np.zeros(n)
-    
     for iteration in range(max_iterations):
         x_new = np.copy(x)
         for i in range(n):
             sum1 = sum(a[i][j] * x_new[j] for j in range(i))
             sum2 = sum(a[i][j] * x[j] for j in range(i + 1, n))
             x_new[i] = (b[i] - sum1 - sum2) / a[i][i]
-        
         # Проверка сходимости
         if np.linalg.norm(x_new - x, ord=np.inf) < tolerance:
             print(f"Решение найдено за {iteration + 1} итераций.")
             return x_new
-        
         x = x_new
-    
     print("Достигнуто максимальное количество итераций.")
     return x
 
@@ -64,7 +64,13 @@ for i in matrisa:
 # Ввод коэффициентов b
 b = []
 for i in range(stroki):
-    b.append(int(input(f"Введите свободный член для уравнения {i + 1}: ")))
+    while True:
+        try:
+            free_coefficient = float(input(f"Введите свободный член для уравнения {i + 1}: "))
+            b.append(free_coefficient)
+            break
+        except ValueError:
+            print("Ошибка ввода. Пожалуйста, введите число.")
 
 # Проверка сходимости
 if check_convergence(matrisa):
